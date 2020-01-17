@@ -1,0 +1,80 @@
+{
+  "name": "@dev-radar/mobile",
+  "version": "1.0.0",
+  "main": "__generated__/AppEntry.js",
+  "private": false,
+  "license": "MIT",
+  "packagerOpts": {
+    "config": "metro.config.js"
+  },
+  "scripts": {
+    "commit": "git-cz",
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject",
+    "postinstall": "expo-yarn-workspaces postinstall"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "@commitlint/cli": "^8.3.4",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@react-native-community/masked-view": "^0.1.5",
+    "axios": "^0.19.1",
+    "commitizen": "^4.0.3",
+    "cz-conventional-changelog": "3.0.2",
+    "expo": "^36.0.2",
+    "husky": "^3.0.9",
+    "lint-staged": "^9.4.3",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
+    "react-native-gesture-handler": "~1.5.0",
+    "react-native-maps": "0.26.1",
+    "react-native-reanimated": "~1.4.0",
+    "react-native-safe-area-context": "0.6.0",
+    "react-native-screens": "2.0.0-alpha.12",
+    "react-native-web": "^0.12.0-rc.1",
+    "react-native-webview": "7.4.3",
+    "react-navigation": "^4.0.10",
+    "react-navigation-stack": "^2.0.15",
+    "socket.io-client": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@react-native-community/eslint-config": "^0.0.5",
+    "@types/react": "^16.9.17",
+    "@types/react-native": "^0.60.30",
+    "babel-eslint": "^10.0.3",
+    "babel-plugin-root-import": "^6.4.1",
+    "babel-preset-expo": "^8.0.0",
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-import-resolver-babel-plugin-root-import": "^1.1.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "expo-yarn-workspaces": "^1.2.1",
+    "prettier": "^1.18.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
