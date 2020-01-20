@@ -6,6 +6,7 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  Keyboard,
 } from 'react-native';
 import MapView, { Marker, Callout } from 'react-native-maps';
 import {
@@ -91,8 +92,8 @@ const styles = StyleSheet.create({
 });
 
 export default function Main({ navigation }) {
-  const [devs, setDevs] = useState([]);
   const [currentRegion, setCurrentRegion] = useState(null);
+  const [devs, setDevs] = useState([]);
   const [techs, setTechs] = useState('');
 
   useEffect(() => {
@@ -120,19 +121,8 @@ export default function Main({ navigation }) {
 
   useEffect(() => {
     subscribeToNewDevs(dev => setDevs([...devs, dev]));
+    subscribeToDeletedDevs(dev => setDevs(devs.filter(d => d._id !== dev._id)));
   }, [devs]);
-
-  // useEffect(() => {
-  //   subscribeToDeletedDevs(dev => {
-  //     const novoArray = devs.filter(
-  //       devArray => devArray.github_username !== dev.github_username
-  //     );
-
-  //     console.log(novoArray);
-
-  //     setDevs(novoArray);
-  //   });
-  // }, [devs]);
 
   function setupWebSocket() {
     disconnect();
@@ -154,6 +144,7 @@ export default function Main({ navigation }) {
     });
 
     setDevs(response.data);
+    Keyboard.dismiss();
     setupWebSocket();
   }
 
@@ -172,36 +163,46 @@ export default function Main({ navigation }) {
         initialRegion={currentRegion}
         style={styles.map}
       >
-        {devs.map(({ _id, login, name, avatar_url, bio, techs, location }) => (
-          <Marker
-            key={_id}
-            coordinate={{
-              longitude: location.coordinates[0],
-              latitude: location.coordinates[1],
-            }}
-          >
-            <Image
-              style={styles.avatar}
-              source={{
-                uri: avatar_url,
-              }}
-            />
-            <Callout
-              onPress={() => {
-                navigation.navigate('Profile', {
-                  login,
-                  name,
-                });
+        {devs.map(
+          ({
+            _id,
+            github_username,
+            name,
+            avatar_url,
+            bio,
+            techs,
+            location,
+          }) => (
+            <Marker
+              key={_id}
+              coordinate={{
+                latitude: location.coordinates[0],
+                longitude: location.coordinates[1],
               }}
             >
-              <View style={styles.callout}>
-                <Text style={styles.devName}>{name}</Text>
-                <Text style={styles.devBio}>{bio}</Text>
-                <Text style={styles.devTechs}>{techs.join(', ')}</Text>
-              </View>
-            </Callout>
-          </Marker>
-        ))}
+              <Image
+                style={styles.avatar}
+                source={{
+                  uri: avatar_url,
+                }}
+              />
+              <Callout
+                onPress={() => {
+                  navigation.navigate('Profile', {
+                    github_username,
+                    name,
+                  });
+                }}
+              >
+                <View style={styles.callout}>
+                  <Text style={styles.devName}>{name}</Text>
+                  <Text style={styles.devBio}>{bio}</Text>
+                  <Text style={styles.devTechs}>{techs.join(', ')}</Text>
+                </View>
+              </Callout>
+            </Marker>
+          )
+        )}
       </MapView>
       <View style={styles.searchForm}>
         <TextInput
@@ -211,7 +212,6 @@ export default function Main({ navigation }) {
           autoCapitalize="words"
           autoCorrect={false}
           clearButtonMode="always"
-          value={techs}
           onChangeText={setTechs}
         />
         <TouchableOpacity onPress={loadDevs} style={styles.loadButton}>

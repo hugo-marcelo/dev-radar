@@ -34,8 +34,6 @@ exports.findConnections = (coordinates, techs) => {
 
 exports.sendMessage = (to, message, data) => {
   to.forEach(connection => {
-    console.log(connection);
-
     io.to(connection.id).emit(message, data);
   });
 };

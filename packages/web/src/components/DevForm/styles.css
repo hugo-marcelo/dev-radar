@@ -33,20 +33,13 @@ aside form .input-block input {
   border-bottom: 1px solid #eee;
 }
 
-aside form button[type='submit'] {
-  width: 100%;
-  border: 0;
+.btn-container {
+  display: flex;
   margin-top: 30px;
-  background: #7d50e7;
-  border-radius: 2px;
-  padding: 15px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff;
-  cursor: pointer;
-  transition: background 0.5s;
+  align-items: center;
+  justify-content: center;
 }
 
-aside form button[type='submit']:hover {
-  background: #6931ca;
+.Button {
+  width: 100%;
 }

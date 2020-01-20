@@ -4,9 +4,6 @@
   "main": "__generated__/AppEntry.js",
   "private": false,
   "license": "MIT",
-  "packagerOpts": {
-    "config": "metro.config.js"
-  },
   "scripts": {
     "commit": "git-cz",
     "start": "expo start",
@@ -36,6 +33,7 @@
     "commitizen": "^4.0.3",
     "cz-conventional-changelog": "3.0.2",
     "expo": "^36.0.2",
+    "expo-location": "~8.0.0",
     "husky": "^3.0.9",
     "lint-staged": "^9.4.3",
     "react": "^16.12.0",
@@ -50,6 +48,9 @@
     "react-native-webview": "7.4.3",
     "react-navigation": "^4.0.10",
     "react-navigation-stack": "^2.0.15",
+    "reactotron-react-native": "^4.0.2",
+    "reactotron-redux": "^3.1.2",
+    "reactotron-redux-saga": "^4.2.2",
     "socket.io-client": "^2.3.0"
   },
   "devDependencies": {

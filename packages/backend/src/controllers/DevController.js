@@ -27,7 +27,7 @@ module.exports = {
 
       const location = {
         type: 'Point',
-        coordinates: [longitude, latitude],
+        coordinates: [latitude, longitude],
       };
 
       dev = await Dev.create({
@@ -69,16 +69,13 @@ module.exports = {
 
   async destroy(request, response) {
     const { github_username } = request.params;
-
     const dev = await Dev.findOne({ github_username });
+
+    const [latitude, longitude] = dev.location.coordinates;
 
     if (!dev) {
       return response.status(400).json({ error: 'Dev not found' });
     }
-
-    const { latitude, longitude } = dev.location.coordinates;
-
-    await dev.remove();
 
     const sendSocketMessageTo = findConnections(
       {
@@ -88,8 +85,9 @@ module.exports = {
       dev.techs
     );
 
-    //sendMessage(sendSocketMessageTo, 'deletedDev', dev);
+    sendMessage(sendSocketMessageTo, 'deletedDev', dev);
 
-    return response.json();
+    await Dev.deleteOne({ github_username });
+    return response.json({ ok: true });
   },
 };

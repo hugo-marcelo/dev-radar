@@ -18,7 +18,7 @@
   },
   "scripts": {
     "commit": "git-cz",
-    "start": "nodemon ."
+    "start": "nodemon src/index.js"
   },
   "dependencies": {
     "axios": "^0.19.1",

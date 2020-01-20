@@ -1,6 +1,6 @@
 import socketio from 'socket.io-client';
 
-const socket = socketio('http://192.168.2.1:3333', {
+const socket = socketio('http://localhost:3333', {
   autoConnect: false,
 });
 
@@ -8,9 +8,9 @@ function subscribeToNewDevs(subscribeFunction) {
   socket.on('newDev', subscribeFunction);
 }
 
-// function subscribeToDeletedDevs(subscribeFunction) {
-//   socket.on('deletedDev', subscribeFunction);
-// }
+function subscribeToDeletedDevs(subscribeFunction) {
+  socket.on('deletedDev', subscribeFunction);
+}
 
 function connect(latitude, longitude, techs) {
   socket.io.opts.query = {
@@ -28,9 +28,4 @@ function disconnect() {
   }
 }
 
-export {
-  connect,
-  disconnect,
-  subscribeToNewDevs,
-  //subscribeToDeletedDevs,
-};
+export { connect, disconnect, subscribeToNewDevs, subscribeToDeletedDevs };

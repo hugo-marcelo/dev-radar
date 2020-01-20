@@ -1,47 +1,47 @@
 import React from 'react';
-import { MdDelete } from 'react-icons/md';
+import { Edit, Delete } from '@material-ui/icons';
+import { Button } from '@material-ui/core';
 import { toast } from 'react-toastify';
-import api from '~/services/api';
 
 import './styles.css';
 
-function DevItem({ dev, onClick }) {
-  async function handleDeleteDev(github_username) {
-    try {
-      await api.delete(`/devs/${github_username}`);
+function DevItem({ dev, onDeleteForm, onUpdateClick }) {
+  const { _id, avatar_url, name, techs, github_username, bio } = dev;
 
-      toast.success('Dev removido');
+  async function handleDelete() {
+    await onDeleteForm({ github_username });
 
-      await onClick();
-    } catch (err) {
-      const { error } = err.response.data;
+    toast.success('Dev removido');
+  }
 
-      toast.success(error);
-    }
+  async function handleUpdateState() {
+    await onUpdateClick({ _id, github_username });
   }
 
   return (
     <li className="dev-item">
       <header>
         <div className="profile">
-          <img src={dev.avatar_url} alt={dev.name} />
+          <img src={avatar_url} alt={name} />
 
           <div className="info">
-            <strong>{dev.name}</strong>
-            <span>{dev.techs.join(', ')}</span>
+            <strong>{name}</strong>
+            <span>{techs.join(', ')}</span>
           </div>
         </div>
-        <button
-          type="button"
-          onClick={() => handleDeleteDev(dev.github_username)}
-        >
-          <MdDelete size={20} />
-        </button>
+        <Button size="small" color="primary" onClick={handleDelete}>
+          <Delete fontSize="default" />
+        </Button>
       </header>
-      <p>{dev.bio}</p>
-      <a href={`https://github.com/${dev.github_username}`}>
-        Acessar perfil no Github
-      </a>
+      <p>{bio}</p>
+      <footer>
+        <a href={`https://github.com/${github_username}`}>
+          Acessar perfil no Github
+        </a>
+        <Button size="small" color="secondary" onClick={handleUpdateState}>
+          <Edit fontSize="default" />
+        </Button>
+      </footer>
     </li>
   );
 }

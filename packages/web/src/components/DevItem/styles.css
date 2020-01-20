@@ -56,7 +56,15 @@ li.dev-item p {
   margin: 10px 0;
 }
 
-li.dev-item a {
+li.dev-item footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+li.dev-item footer a {
+  display: flex;
+  align-items: center;
+
   color: #8e4dff;
   font-size: 14px;
   text-decoration: none;

@@ -1,60 +1,81 @@
 import React, { useState, useEffect } from 'react';
+import './styles.css';
 import { Button, ButtonGroup } from '@material-ui/core';
 import { toast } from 'react-toastify';
 
-import './styles.css';
-
-function DevForm({ onSubmit }) {
-  const [github_username, setGithub_username] = useState('');
+function UpdateForm({ onUpdateForm, onCancel, dev }) {
+  const [actualDev, setActualDev] = useState({});
   const [techs, setTechs] = useState('');
+  const [name, setName] = useState('');
+  const [bio, setBio] = useState('');
+
   const [latitude, setLatitude] = useState('');
-  const [longitude, setlongitude] = useState('');
+  const [longitude, setLongitude] = useState('');
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       position => {
         const { latitude, longitude } = position.coords;
-
         setLatitude(latitude);
-        setlongitude(longitude);
+        setLongitude(longitude);
       },
       err => {
         console.log(err);
       },
       {
-        enableHighAccuracy: true,
         timeout: 30000,
       }
     );
   }, []);
 
+  useEffect(() => {
+    setActualDev(dev);
+  }, [dev]);
+
   async function handleSubmit(e) {
     e.preventDefault();
 
-    await onSubmit({
-      github_username,
+    await onUpdateForm({
       techs,
+      name,
+      bio,
       latitude,
       longitude,
     });
 
-    toast.success('Dev cadastrado');
+    toast.success('Dev atualizado');
+  }
 
-    setGithub_username('');
-    setTechs('');
+  function handleExit(e) {
+    e.preventDefault();
+    onCancel();
   }
 
   return (
     <>
-      <form id="save-form" onSubmit={handleSubmit}>
+      <form id="edit-form" onSubmit={handleSubmit}>
         <div className="input-block">
-          <label htmlFor="github_username">Usuário do Github</label>
+          <label>Usuário: {actualDev.github_username}</label>
+        </div>
+        <div className="input-block">
+          <label htmlFor="nome">Novo Nome</label>
           <input
-            name="github_username"
-            id="github_username"
+            name="name"
+            id="name"
             required
-            value={github_username}
-            onChange={e => setGithub_username(e.target.value)}
+            value={name}
+            onChange={e => setName(e.target.value)}
+          />
+        </div>
+        <div className="input-block">
+          <label htmlFor="bio">Nova Bio</label>
+          <textarea
+            name="bio"
+            id="bio"
+            required
+            value={bio}
+            rows="4"
+            onChange={e => setBio(e.target.value)}
           />
         </div>
 
@@ -81,7 +102,6 @@ function DevForm({ onSubmit }) {
               onChange={e => setLatitude(e.target.value)}
             />
           </div>
-
           <div className="input-block">
             <label htmlFor="longitude">Longitude</label>
             <input
@@ -90,20 +110,27 @@ function DevForm({ onSubmit }) {
               id="longitude"
               required
               value={longitude}
-              onChange={e => setlongitude(e.target.value)}
+              onChange={e => setLongitude(e.target.value)}
             />
           </div>
         </div>
       </form>
-
       <div className="btn-container">
         <ButtonGroup
           className="btn-group"
           variant="contained"
           aria-label="contained primary button group"
         >
-          <Button form="save-form" color="primary" type="submit">
-            Salvar
+          <Button
+            className="Button"
+            form="edit-form"
+            color="primary"
+            type="submit"
+          >
+            Atualizar
+          </Button>
+          <Button className="Button" color="secondary" onClick={handleExit}>
+            Cancelar
           </Button>
         </ButtonGroup>
       </div>
@@ -111,4 +138,4 @@ function DevForm({ onSubmit }) {
   );
 }
 
-export default DevForm;
+export default UpdateForm;
