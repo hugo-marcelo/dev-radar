@@ -10,7 +10,8 @@
     "start:backend": "yarn workspace @dev-radar/backend start",
     "start:web": "concurrently --kill-others \"yarn start:backend\" \"yarn workspace @dev-radar/web start\"",
     "start:mobile": "concurrently --kill-others \"yarn start:backend\" \"yarn workspace @dev-radar/mobile start\"",
-    "start": "concurrently --kill-others \"yarn start:backend\" \"yarn workspace @dev-radar/web start\" \"yarn workspace @dev-radar/mobile start\""
+    "start": "concurrently --kill-others \"yarn start:backend\" \"yarn workspace @dev-radar/web start\" \"yarn workspace @dev-radar/mobile start\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false"
   },
   "workspaces": [
     "packages/*"
