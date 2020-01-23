@@ -1,7 +1,8 @@
 {
-  "name": "dev-radar",
+  "name": "@dev-radar/mobile",
   "version": "1.0.0",
-  "private": true,
+  "main": "__generated__/AppEntry.js",
+  "private": false,
   "license": "MIT",
   "scripts": {
     "commit": "git-cz",
@@ -9,7 +10,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "postinstall": "expo-yarn-workspaces postinstall"
   },
   "husky": {
     "hooks": {

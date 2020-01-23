@@ -7,14 +7,8 @@ Uma maneira de encontrar devs por tecnologia próximos a você.
 ## Como usar
 
 - clone este repositório
-- digite `cd backend` para entrar na pasta do projeto backend
+- entre na pasta do projeto
 - digite `yarn` para instalar as dependências
-- digite `yarn dev` para iniciar o projeto
-
-- digite `cd web` para entrar na pasta do projeto frontend
-- digite `yarn` para instalar as dependências
-- digite `yarn start` para iniciar o portal
-
-- digite `cd mobile` para entrar na pasta do projeto mobile
-- digite `yarn` para instalar as dependências
-- digite `yarn start` para iniciar o app
+- digite `yarn start:web` para iniciar o projeto web
+- digite `yarn start:mobile` para iniciar o projeto mobile (lembre-se de mudar o IP de conexão do expo no mobile)
+- digite `yarn start` para iniciar o projeto web e mobile
