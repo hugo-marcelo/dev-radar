@@ -1,6 +1,7 @@
 import socketio from 'socket.io-client';
+import devradar from '../config/devradar';
 
-const socket = socketio('http://localhost:3333', {
+const socket = socketio(devradar.apiURL, {
   autoConnect: false,
 });
 

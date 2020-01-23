@@ -1,7 +1,8 @@
 import axios from 'axios';
+import devradar from '../config/devradar';
 
 const api = axios.create({
-  baseURL: 'http://localhost:3333',
+  baseURL: devradar.apiURL,
 });
 
 export default api;
