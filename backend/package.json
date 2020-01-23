@@ -1,9 +1,8 @@
 {
-  "name": "@dev-radar/backend",
+  "name": "devradar",
   "version": "1.0.0",
   "main": "src/index.js",
   "license": "MIT",
-  "private": false,
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",

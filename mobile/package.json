@@ -1,8 +1,7 @@
 {
-  "name": "@dev-radar/mobile",
+  "name": "dev-radar",
   "version": "1.0.0",
-  "main": "__generated__/AppEntry.js",
-  "private": false,
+  "private": true,
   "license": "MIT",
   "scripts": {
     "commit": "git-cz",
