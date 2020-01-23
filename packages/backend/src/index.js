@@ -11,13 +11,10 @@ const server = http.Server(app);
 
 setupWebSocket(server);
 
-mongoose.connect(
-  'mongodb+srv://rocketseat:rocketseat@cluster0-umivl.mongodb.net/dev-radar?retryWrites=true&w=majority',
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+mongoose.connect(process.env.MONGO_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 app.use(cors());
 app.use(express.json());
