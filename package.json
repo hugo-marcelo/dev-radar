@@ -15,7 +15,7 @@
   "workspaces": [
     "packages/*"
   ],
-  "devDependencies": {
+  "dependencies": {
     "concurrently": "^5.0.2"
   }
 }
