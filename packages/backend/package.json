@@ -19,7 +19,8 @@
   "scripts": {
     "commit": "git-cz",
     "dev": "nodemon src/index.js",
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "publish-backend": "cd ../../ && git subtree push --prefix packages/backend heroku-backend master"
   },
   "dependencies": {
     "axios": "^0.19.1",

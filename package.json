@@ -6,9 +6,6 @@
   "private": true,
   "repository": "git@github.com:hugo-marcelo/dev-radar.git",
   "author": "Hugo Marcelo <hugomarcelo91@gmail.com>",
-  "scripts": {
-    "heroku-postbuild": "./scripts/heroku.build"
-  },
   "workspaces": [
     "packages/*"
   ]
