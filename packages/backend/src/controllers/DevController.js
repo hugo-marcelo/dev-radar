@@ -71,7 +71,7 @@ module.exports = {
     const { github_username } = request.params;
     const dev = await Dev.findOne({ github_username });
 
-    const [latitude, longitude] = dev.location.coordinates;
+    const [longitude, latitude] = dev.location.coordinates;
 
     if (!dev) {
       return response.status(400).json({ error: 'Dev not found' });
