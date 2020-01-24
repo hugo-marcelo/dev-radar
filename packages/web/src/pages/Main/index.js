@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
-import api from '~/services/api';
+import api from '../../services/api';
 
-import '~/App.css';
-import '~/Sidebar.css';
-import '~/Main.css';
+import '../../App.css';
+import '../../Sidebar.css';
+import '../../Main.css';
 
-import DevForm from '~/components/DevForm';
-import DevItem from '~/components/DevItem';
-import UpdateForm from '~/components/UpdateForm';
+import DevForm from '../../components/DevForm';
+import DevItem from '../../components/DevItem';
+import UpdateForm from '../../components/UpdateForm';
 
 function Main() {
   const [devs, setDevs] = useState([]);
