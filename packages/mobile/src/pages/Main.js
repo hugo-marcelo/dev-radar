@@ -176,8 +176,8 @@ export default function Main({ navigation }) {
             <Marker
               key={_id}
               coordinate={{
-                latitude: location.coordinates[0],
-                longitude: location.coordinates[1],
+                longitude: location.coordinates[0],
+                latitude: location.coordinates[1],
               }}
             >
               <Image
