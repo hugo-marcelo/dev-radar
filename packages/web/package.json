@@ -16,7 +16,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-app-rewired": "^2.1.5",
-    "react-scripts": "3.3.0",
+    "react-scripts": "3.2.0",
     "react-toastify": "^5.5.0",
     "reactotron-react-js": "^3.3.6",
     "reactotron-redux": "^3.1.2",
@@ -24,9 +24,9 @@
     "styled-components": "^5.0.0"
   },
   "scripts": {
-    "start": "react-app-rewired --max_old_space_size=4096 start",
-    "build": "react-app-rewired --max_old_space_size=4096 build",
-    "test": "react-app-rewired test",
+    "start": "react-scripts --max_old_space_size=4096 start",
+    "build": "react-scripts --max_old_space_size=4096 build",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "publish-frontend": "cd ../../ && git subtree push --prefix packages/web heroku-frontend master"
   },
