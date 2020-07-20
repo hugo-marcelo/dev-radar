@@ -15,14 +15,14 @@
 </p>
 
 <p align="center">
-  <a href="https://insomnia.rest/run/?label=DevRadar&uri=https%3A%2F%2Fraw.githubusercontent.com%2Fhugo-marcelo%dev-radar%2Fmaster%2Fbackend%2FInsomnia.json" target="_blank"><img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia"></a>
+  <a href="https://insomnia.rest/run/?label=DevRadar&uri=https://raw.githubusercontent.com/hugo-marcelo/dev-radar/master/backend/Insomnia.json" target="_blank"><img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia"></a>
 </p>
 
 ## :gear: Back-end
 
 ### :information_source: Deploy
 
-- https://dev-radar-api.herokuapp.com/
+- https://dev-radar-api-hugo.herokuapp.com/
 
 ### :information_source: Instruções Back-end
 
@@ -40,7 +40,7 @@ yarn start
 
 ### :information_source: Deploy
 
-- https://dev-radar-web.herokuapp.com/
+- https://dev-radar-web-hugo.herokuapp.com/
 
 ### :information_source: Instruções Front-end
 
