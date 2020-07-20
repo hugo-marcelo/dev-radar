@@ -1,8 +1,7 @@
 import axios from 'axios';
-import devradar from '../config/devradar';
 
 const api = axios.create({
-  baseURL: devradar.apiURL,
+  baseURL: process.env.REACT_APP_API_URL,
 });
 
 export default api;
